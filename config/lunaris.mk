@@ -203,12 +203,15 @@ PRODUCT_PRODUCT_PROPERTIES += \
     persist.sys.udfps.custom=$(TARGET_CUSTOM_UDFPS)
 
 # Quick Switch (Launcher3)
-WITH_PIXEL_LAUNCHER ?= false
+WITH_PIXEL_LAUNCHER ?= true
 ifeq ($(WITH_GMS),true)
     ifeq ($(WITH_PIXEL_LAUNCHER),true)
         PRODUCT_SYSTEM_PROPERTIES += \
             persist.sys.default_launcher=0 \
             persist.sys.quickswitch_pixel_shipped=1
+        PRODUCT_PACKAGES += \
+            ple-hook-runtime \
+            PixelLauncherEnhanced
     else
         PRODUCT_SYSTEM_PROPERTIES += \
             persist.sys.default_launcher=0 \
